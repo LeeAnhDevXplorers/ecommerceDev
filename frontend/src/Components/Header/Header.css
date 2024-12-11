@@ -1,0 +1,63 @@
+
+.bg {
+  background-image: linear-gradient(#fff9ab, #eee7db);
+}
+
+.headerWrapper {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.headerWrapper .top-strip {
+  padding: 8px 0;
+}
+
+.headerWrapper .top-strip p {
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.headerWrapper .header {
+  width: 100%;
+  height: auto;
+  padding: 10px 0;
+}
+
+.logoWrapper img {
+  width: 100%;
+}
+
+
+.headerWrapper .header .part2 .countryDrop {
+  width: 170px;
+  height: 45px;
+  min-width: 170px;
+  text-align: left;
+  justify-content: flex-start;
+  color: #ff6a00;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.headerWrapper .header .part2 .countryDrop span.ml-auto svg {
+  opacity: 0.7;
+}
+
+
+header .part3 .circle {
+  align-items: center;
+  justify-content: center;
+  min-width: 50px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #000;
+}
+
+header .part3 .circle svg {
+  font-size: 2rem;
+}
+
+

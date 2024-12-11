@@ -1,0 +1,166 @@
+header {
+  width: 100%;
+  height: 80px;
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+header .logo {
+  text-decoration: none;
+}
+
+header .logo img {
+  width: 50px;
+}
+
+header .logo span {
+  color: #1a1a1a;
+  font-weight: 700;
+  font-size: 2.6rem;
+}
+
+header .row {
+  margin: 0;
+}
+
+header button.rounded-circle {
+  min-width: 40px;
+  width: 40px;
+  height: 40px;
+  background-color: #f0f5ff;
+  color: #0858f7;
+}
+
+
+
+header button.rounded-circle svg {
+  color: #292929;
+  font-size: 2rem;
+  transition: color 0.3s ease;
+}
+
+header button.rounded-circle:hover svg {
+  color: #0858f7;
+}
+
+.myAcc {
+  text-align: left;
+  color: #0858f7;
+  text-transform: capitalize;
+}
+
+
+
+.userInfo {
+  padding-left: 10px;
+}
+
+.userInfo h4 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 0;
+  color: #292929;
+}
+
+.userInfo p {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: #000;
+  opacity: 0.7;
+}
+
+#account-menu ul,
+#notifications ul {
+  padding: 0;
+}
+
+#account-menu li {
+  padding: 12px 15px;
+}
+
+#account-menu li svg {
+  font-size: 1.8rem;
+}
+
+#notifications .MuiPaper-elevation {
+  width: 350px;
+  position: relative;
+}
+
+.dropdow_list-notify .head {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #0858f7;
+}
+
+.dropdow_list-notify .head h4 {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.dropdow_list-notify .userImg {
+  width: 70px;
+}
+
+.dropdow_list-notify li.MuiButtonBase-root {
+  background-color: #ebf6ff;
+  color: #000;
+  padding: 10px 20px;
+  transition: background-color 0.15s ease-in;
+}
+
+.dropdow_list-notify li.MuiButtonBase-root:hover {
+  background-color: rgba(235, 246, 255, 0.5);
+}
+
+.dropdow_list-notify .css-amwe01-MuiButtonBase-root-MuiMenuItem-root + .MuiDivider-root {
+  margin-top: 0;
+}
+
+.dropdow_list-notify .srcoll {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.dropdowInfo {
+  padding-left: 15px;
+}
+
+.dropdowInfo h4 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  white-space: break-spaces;
+  line-height: 2rem;
+}
+
+.dropdowInfo h4 b {
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+.dropdowInfo p {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.text-sky {
+  color: #0858f7;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+}

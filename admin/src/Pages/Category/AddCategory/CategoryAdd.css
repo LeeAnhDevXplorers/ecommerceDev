@@ -1,0 +1,141 @@
+.card {
+  word-wrap: break-word;
+  background-clip: initial;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  position: relative;
+  padding: 24px;
+}
+
+.form .card h5 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1.2rem;
+}
+
+.form .form-group h6 {
+  font-size: 1.4rem;
+}
+
+.form .form-group input,
+.css-w76bbz-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select,
+.form .form-group textarea {
+  background: #fafafa;
+  border: 1px solid #0000001a !important;
+  border-radius: 5px;
+  font-size: 14px;
+  height: 60px;
+  outline: none !important;
+  padding-left: 15px;
+  width: 100%;
+}
+
+.form .form-group textarea {
+  height: 120px;
+  padding-top: 15px;
+}
+
+.form .form-group .star_icon {
+  font-size: 2.6rem;
+}
+
+.css-sc8y68-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+  font-size: 1.8rem !important;
+}
+
+.imgUploadBox {
+  flex-wrap: nowrap;
+  gap: 10px;
+  width: 100%;
+}
+
+.imgUploadBox .uploadBox {
+  align-items: center;
+  background: #fafafa;
+  border: 1px dashed #0000004d;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  height: 150px !important;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+  transition: all 0.3s;
+  width: 150px;
+}
+
+.imgUploadBox .uploadBox .remove {
+  align-items: center;
+  background: #d32f2f;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  height: 20px;
+  justify-content: center;
+  position: absolute;
+  right: -7px;
+  top: -7px;
+  width: 20px;
+  z-index: 100;
+}
+
+.imgUploadBox .uploadBox .remove svg {
+  color: #fff;
+  font-size: 2rem;
+}
+
+.imgUploadBox .uploadBox .box {
+  border-radius: 7px;
+  height: 150px !important;
+  overflow: hidden;
+  padding: 2px;
+  width: 100%;
+}
+.imgUploadBox .uploadBox .box .lazy-load-image-background {
+  height: 100% !important;
+  width: 100% !important;
+}
+.lazy-load-image-background.blur.lazy-load-image-loaded {
+  filter: blur(0);
+  transition: filter 0.3s;
+}
+.lazy-load-image-background.blur.lazy-load-image-loaded > img {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.imgUploadBox .uploadBox input {
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.imgUploadBox .uploadBox .info {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.imgUploadBox .uploadBox .info svg {
+  font-size: 50px;
+  opacity: 0.2;
+}
+.imgUploadBox .uploadBox .info h5 {
+  font-size: 15px;
+  opacity: 0.5;
+  text-align: center;
+}
+
+.css-1toxriw-MuiList-root-MuiMenu-list {
+  padding: 0 !important;
+}
+
+.css-1toxriw-MuiList-root-MuiMenu-list li:hover {
+  background-color: rgba(0, 0, 0, 0.125)!important;
+}

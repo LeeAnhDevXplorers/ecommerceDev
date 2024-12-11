@@ -1,0 +1,118 @@
+.productItem {
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.245s ease-in;
+  border-radius: 10px;
+}
+
+
+.productItem .info {
+  padding: 15px;
+}
+
+.productItem .badge {
+  position: absolute;
+  display: inline-block;
+  padding: 7px 10px;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
+  font-size: 1.4rem;
+} 
+
+.productItem .info a:hover {
+  color: #233a95;
+}
+
+.productItem .info a{
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #202435;
+  text-decoration: none;
+}
+
+.productItem .info .stock {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 4px 0;
+  text-transform: uppercase;
+}
+
+.productItem .info .rating {
+  font-size: 1.5rem;
+}
+
+.productItem .info .oldPrice {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.4);
+  text-decoration: line-through;
+}
+
+.productItem .info .netPrice {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.productItem .actions {
+  position: absolute;
+  top: 20px;
+  right: -100%;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.productItem .actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  width: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0s;
+}
+
+.productItem .actions button svg {
+  color: #000;
+  opacity: 0.8;
+  pointer-events: none;
+  font-size: 15px;
+}
+
+.productItem .actions button:hover {
+  background: #ff6a00;
+}
+
+.productItem .actions button:hover svg {
+  color: #fff;
+}
+
+.productItem .imgWrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.productItem .imgWrapper img {
+  transition: all 0.3s ease-in-out;
+}
+
+.productItem .imgWrapper:hover img {
+  transform: scale(1.1);
+}
+
+.productItem .imgWrapper:hover .actions {
+  opacity: 1;
+  right: 10px;
+}

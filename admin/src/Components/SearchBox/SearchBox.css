@@ -1,0 +1,31 @@
+.searchBox {
+  width: 100%;
+  max-width: 400px;
+  height: 40px;
+  background-color: #f0f5ff;
+  border-radius: 6px;
+  padding: 3px 15px;
+  display: flex;
+  align-items: center;
+}
+
+.searchBox input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 1.6rem;
+  color: #292929;
+  flex-grow: 1;
+  padding: 5px 0;
+}
+
+.searchBox input::placeholder {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.searchBox svg {
+  font-size: 1.8rem;
+  color: #292929;
+  margin-left: 10px;
+  cursor: pointer;
+}

@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css');
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  line-height: 1.6rem;
+  font-family: 'Inter', sans-serif;
+}
+
+@media (min-width: 1300px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: 1200px;
+  }
+}
+
+.hd {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.text-red {
+  color: red;
+}
+
+.container {
+  max-width: 1280px;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.text-light {
+  color: #4b4747 !important;
+}
+
+.text-sml {
+  font-size: 1.4rem;
+}
+
+.btn-blue {
+  background-color: #ff6a00 !important;
+  color: #fff !important;
+  text-transform: capitalize !important;
+}
+
+.btn-big {
+  font-size: 1.8rem !important;
+  padding: 8px 18px !important;
+  min-width: auto !important;
+}
+
+.btn-round {
+  border-radius: 30px !important;
+}
+
+.productRow2 .productItem {
+  width: 24%;
+}
+
+.productItem:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.productListings .productItem.four {
+  width: 19.65%;
+}
+.productListings .productItem.three {
+  width: 24.6%;
+}
+.productListings .productItem.two {
+  width: 33%;
+}
+.productListings .productItem.one {
+  width: 49.7%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.productListings .productItem.one .info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.productListings .productItem.one .info h4 {
+  font-size: 2rem;
+}
+
+.productListings .productItem.one .info span {
+  font-size: 1.8rem;
+}
+
+.MuiTabs-scrollButtons.Mui-disabled {
+  opacity: 0.3;
+}
+.MuiButtonBase-root {
+  font-size: 1.2rem !important;
+  color: #4b4747 !important;
+  font-weight: 600 !important;
+}
+
+.MuiRating-root svg {
+  font-size: 2rem;
+  margin: 4px 2px;
+}
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  cursor: wait;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.checkout-form .form-group {
+  margin-bottom: 20px;
+}
+
+.orderInfo {
+  background-color: #fafafa;
+  padding: 25px;
+}
+
+.orderInfo thead {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 1.4rem;
+  color: #c2c2d3;
+}
+
+.orderInfo tfoot {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 1.4rem;
+  color: #71778e;
+}
+
+.orderInfo tbody {
+  font-size: 1.2rem;
+  color: #202435;
+  font-weight: 500;
+}
+
+.orderInfo .btn-primary {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+.orderInfo .btn-primary:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+.orderInfo .btn-pay {
+  color: #fff !important;
+}
+
+.orderInfo .btn-pay svg {
+  font-size: 2rem;
+}
+
+.order-table th,
+.order-table td {
+  white-space: nowrap;
+  font-size: 1.6rem;
+  vertical-align: middle;
+}
+
+.order-table td:nth-child(1),
+.order-table td:nth-child(2),
+.order-table td:nth-child(3) {
+  color: blue;
+}
+
+.order-table td:nth-child(3) {
+  cursor: pointer;
+}
+
+.order-table .img {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.order-table .img img {
+  width: 100%;
+}
+
+.css-rsks93-MuiPaper-root-MuiDialog-paper {
+  max-width: 1000px !important;
+}

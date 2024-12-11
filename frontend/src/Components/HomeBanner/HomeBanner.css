@@ -1,0 +1,36 @@
+.homeBannerSection {
+  position: relative;
+  overflow: hidden;
+}
+
+.homeBannerSection * {
+  outline: none !important;
+}
+
+.homeBannerSection .slick-arrow {
+  position: absolute;
+  top: 45%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px !important;
+  height: 40px !important;
+  background: #444444;
+  border-radius: 100%;
+  font-family: FontAwesome !important;
+}
+
+.homeBannerSection .slick-arrow.slick-next {
+  right: 25px !important;
+}
+
+.homeBannerSection .slick-arrow.slick-prev {
+  left: 25px !important;
+}
+
+.homeBannerSection .slick-arrow.slick-next::before,
+.homeBannerSection .slick-arrow.slick-prev::before {
+  font-family: FontAwesome !important;
+  color: #fff;
+}

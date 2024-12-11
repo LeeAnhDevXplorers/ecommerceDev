@@ -1,0 +1,215 @@
+.section {
+  padding: 45px 0;
+}
+
+.productDetails .zoomSlider .item {
+  width: 120px;
+  height: 120px;
+}
+
+.productDetails .zoomSlider {
+  padding-top: 10px;
+}
+.productDetails .price span:first-child {
+  font-size: 2.2rem;
+  text-decoration: line-through;
+}
+
+.productDetails .swiper-button-prev, .productDetails .swiper-button-next {
+  top: 50%;
+}
+
+.productDetails .price span:last-child {
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+
+.productDetails .badge {
+  border-radius: 20px;
+  font-size: 1.4rem;
+}
+
+.badge-success {
+  background-color: #e5f8ed;
+  color: #16b858;
+  padding: 12px 16px;
+}
+
+.productDetails p {
+  font-size: 1.6rem;
+}
+
+.productDetails .btn-blue {
+  background-color: #ff6a00;
+  color: #fff !important;
+  text-transform: capitalize;
+}
+
+.productDetails .btn-big {
+  font-size: 1.6rem;
+  padding: 8px 40px;
+  min-width: auto;
+}
+
+.productDetails .btn-round {
+  border-radius: 30px;
+}
+
+.productSize {
+  width: 100%;
+  height: auto;
+  padding: 25px 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.productSize span {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.productSize ul li {
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.productSize ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+  font-size: 1.4rem;
+  transition: all 0.1s ease-in-out;
+}
+
+.productSize ul li a.active {
+  background: #ff6a00;
+  color: #fff;
+}
+
+.productDetails .btn-circle {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  background-color: #edeef5;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #000;
+  padding: 5px;
+}
+
+.productDetails .btn-circle svg {
+  color: #000;
+  opacity: 0.8;
+  font-size: 1.8rem;
+}
+
+.cart-btn {
+  background-color: #ff6a00;
+}
+
+
+.detailsPageTabs {
+  border-radius: 25px;
+}
+
+.detailsPageTabs .table th,
+.detailsPageTabs .table td {
+  vertical-align: middle;
+  font-size: 1.4rem;
+}
+.detailsPageTabs .table td p {
+  margin-bottom: 0;
+}
+
+.customTabs ul li {
+  margin-right: 30px;
+}
+
+.customTabs ul li button {
+  padding: 10px 25px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 1.4rem;
+  text-transform: capitalize;
+  border-radius: 30px;
+  color: #000;
+  transition: all 0.2s ease;
+}
+
+.customTabs ul li button:active {
+  transform: scale(0.9);
+}
+
+.customTabs ul li button.active {
+  background-color: #ff6a00;
+  color: #fff;
+}
+
+.reviewsCard {
+  margin-bottom: 25px;
+}
+
+.reviewsCard .image {
+  width: 100px;
+}
+
+.reviewsCard .rounded-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+}
+
+.reviewsCard .rounded-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.reviewsCard .info {
+  width: 85%;
+  font-size: 1.3rem;
+  line-height: 3rem;
+}
+
+.reviewsCard .info .text-light {
+  font-size: 2rem;
+}
+
+.card span {
+  font-size: 1.6rem;
+}
+
+.reviewForm .form-group {
+  margin-bottom: 25px;
+}
+
+.reviewForm .form-group .form-control {
+  height: 40px;
+  font-size: 20px;
+  border-radius: 7px !important;
+  padding-left: 20px;
+  line-height: 40px;
+}
+
+.reviewForm .form-group textarea.form-control {
+  height: 200px;
+  padding-top: 25px;
+}
+
+.progressBarBox {
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  font-size: 16px;
+}

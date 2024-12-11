@@ -1,0 +1,286 @@
+.productModal .MuiPaper-elevation {
+  padding: 25px;
+  max-width: 1200px;
+  width: 1150px;
+  position: relative;
+}
+
+.productModal .closeModal {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  color: #000;
+  min-width: 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.productModal .closeModal svg {
+  font-size: 2.2rem;
+}
+
+.productModal h4 {
+  font-size: 2.2rem;
+}
+
+.productModal span {
+  font-size: 1.6rem;
+}
+
+.productZoom {
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.zoomSliderBig {
+  width: 100%;
+}
+
+.zoomSlider {
+  padding-top: 30px;
+}
+
+.zoomSlider .slick-slide {
+  padding-right: 20px;
+}
+
+.zoomSlider * {
+  outline: none;
+}
+
+.zoomSlider .item {
+  border: 2px solid transparent;
+  overflow: hidden;
+  border-radius: 15px;
+  cursor: pointer;
+  height: 80px;
+  width: 80px;
+}
+
+.zoomSlider .item_active {
+  border: 2px solid #ff6a00;
+}
+
+.zoomSlider .slick-arrow {
+  top: 55%;
+  zoom: 65%;
+}
+
+.zoomSlider .slick-arrow.slick-next {
+  right: -2%;
+}
+
+.zoomSlider .slick-arrow.slick-prev {
+  left: -5%;
+}
+
+.info .oldPrice {
+  font-size: 2rem;
+  text-decoration: line-through;
+}
+
+.info .netPrice {
+  font-size: 2.4rem;
+}
+
+.productDetailsModal p.mt-3 {
+  font-size: 1.5rem;
+}
+
+.badge.bg-success {
+  background-color: #e5f8ed !important;
+  color: #16b858;
+}
+
+
+
+.quantityDrop {
+  width: 150px;
+  gap: 10px;
+}
+
+.quantityDrop button {
+  min-width: 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e1e0e0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #000;
+}
+
+.quantityDrop button svg {
+  color: #000;
+}
+
+.quantityDrop input {
+  width: 30px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+button {
+  text-transform: capitalize;
+}
+
+.productDetailsModal .btn-sml {
+  font-size: 1.4rem;
+  color: #000;
+  text-transform: capitalize;
+}
+
+.productDetailsModal .btn-sml svg {
+  font-size: 1.8rem;
+}
+
+.productModal .actions button {
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+}
+
+.productModal .actions button svg {
+  font-size: 1.8rem;
+}
+
+.productZoom .badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+  padding: 5px;
+  font-size: 1.5rem;
+  box-sizing: border-box;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  top: 30px;
+  width: 24px;
+  height: 24px;
+  background-color: #f2f2f2;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 100%;
+  /* font-size: 1rem; */
+}
+
+
+/* ================================ */
+.productModal .cart-btn {
+  position: relative;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  background-color: #ff6a00;
+  border-radius: 30px;
+  padding: 0 30px;
+}
+
+.productModal .cart-btn:active {
+  transform: scale(0.9);
+}
+
+.productModal .cart-btn .icon1 {
+  position: absolute;
+  top: 50%;
+  left: -10%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-size: 2.2rem;
+  color: #fff;
+}
+
+.productModal .cart-btn .icon2 {
+  position: absolute;
+  top: -22%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.productModal .cart-btn .added {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 1.6rem;
+  opacity: 0;
+  background-color: #ff6a00;
+  width: 100%;
+  /* padding: 7px 40px; */
+  /* border-radius: 30px; */
+}
+
+.productModal .cart-btn.clicked .icon1 {
+  animation: cart 1.5s ease-in-out forwards;
+}
+
+.productModal .cart-btn.clicked .icon2 {
+  animation: box 1.5s ease-in-out forwards;
+}
+
+.productModal .cart-btn.clicked .add-to-cart {
+  animation: text1 1.5s ease-in-out forwards;
+}
+
+.productModal .cart-btn.clicked .added {
+  animation: text2 1.5s ease-in-out forwards;
+}
+
+@keyframes cart {
+  0% {
+    left: -10%;
+  }
+  40%,
+  60% {
+    left: 50%;
+  }
+  100% {
+    left: 110%;
+  }
+}
+
+@keyframes box {
+  0%,
+  40% {
+    top: -25%;
+  }
+  60% {
+    top: 40%;
+    left: 51%;
+  }
+  100% {
+    top: 40%;
+    left: 112%;
+  }
+}
+
+@keyframes text1 {
+  0% {
+    opacity: 1;
+  }
+  20%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes text2 {
+  0%,
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

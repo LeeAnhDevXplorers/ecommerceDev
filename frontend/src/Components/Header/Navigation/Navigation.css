@@ -1,0 +1,189 @@
+.cartTab .price {
+  font-size: 1.6rem;
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 700;
+}
+
+.cartTab button {
+  background-color: #fff1ee;
+}
+
+.cartTab button svg {
+  color: #ff6a00;
+}
+
+.cartTab .count {
+  position: absolute;
+  top: -6px;
+  right: -4px;
+  background-color: #ff6a00;
+  border-radius: 50%;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+}
+
+nav .navPart1 {
+  max-width: 20%;
+  flex: 0 0 20%;
+}
+
+nav .navPart2 {
+  max-width: 80%;
+  flex: 0 0 80%;
+}
+
+nav .navPart1 .catWrapper {
+  position: relative;
+}
+
+nav .navPart1 .catWrapper .sidebarNav {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  visibility: hidden;
+  z-index: 10;
+}
+
+nav .navPart1 .catWrapper .sidebarNav.open {
+  opacity: 1;
+  height: auto;
+  visibility: inherit;
+}
+
+nav .navPart1 .catWrapper .sidebarNav ul li {
+  width: 100%;
+  list-style: none;
+}
+
+nav .navPart1 .catWrapper .sidebarNav ul li:hover a button {
+  color: #ff6a00;
+}
+
+nav .navPart1 .catWrapper .sidebarNav ul li button {
+  color: #000;
+  font-size: 1.4rem;
+  width: 100%;
+  justify-content: flex-start;
+  text-transform: capitalize;
+}
+
+nav .navPart1 .catWrapper .sidebarNav ul li {
+  position: static;
+}
+
+nav .navPart1 .catWrapper .sidebarNav ul li .submenu {
+  position: absolute;
+  top: 0px;
+  left: calc(100% + 4px);
+  width: 250px;
+  height: auto;
+  background: #fff;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+nav .navPart1 .catWrapper .sidebarNav ul li:hover .submenu {
+  opacity: 1;
+  visibility: inherit;
+  left: calc(100% + 4px);
+  padding: 20px;
+}
+
+nav .navPart1 .catWrapper .sidebarNav ul li button:hover {
+  background-color: transparent;
+}
+
+nav .allCatTab {
+  background-color: #ff6a00;
+  padding: 8px 20px;
+  border-radius: 30px;
+}
+
+nav .allCatTab * {
+  color: #fff;
+}
+
+nav .allCatTab .text {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+nav .allCatTab .icon1 svg {
+  font-size: 2rem;
+}
+nav .allCatTab .icon2 svg {
+  font-size: 1.6rem;
+}
+
+nav .navPart2 ul {
+  margin-bottom: 0px;
+}
+
+nav .navPart2 ul li {
+  position: relative;
+}
+
+nav .navPart2 ul li .submenu {
+  position: absolute;
+  top: 150px;
+  left: 0;
+  min-width: 200px;
+  background-color: #fff;
+  border-radius: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+  z-index: 10;
+}
+
+nav .navPart2 ul li .submenu a {
+  display: block;
+  width: 100%;
+}
+
+nav .navPart2 ul li .submenu a button {
+  width: 100%;
+  border-radius: 0px;
+  text-transform: capitalize;
+  font-weight: 600;
+  justify-content: flex-start;
+}
+
+nav .navPart2 ul li:hover .submenu {
+  opacity: 1;
+  visibility: inherit;
+  top: calc(100% + 8px);
+}
+
+nav .navPart2 ul li a {
+  text-decoration: none;
+}
+
+nav .navPart2 ul li a button {
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.7);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  transition: all ease-in-out 0.25s;
+}
+
+nav .navPart2 ul li a button:hover {
+  color: #ff6a00;
+  background-color: rgba(255, 106, 0, 0.15);
+}

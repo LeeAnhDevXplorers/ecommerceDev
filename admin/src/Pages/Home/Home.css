@@ -1,0 +1,166 @@
+.right-content {
+  padding: 90px 30px; /* Changed to rem for scalability */
+}
+
+.dashboardBoxWrapper {
+  gap: 1.25rem;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.dashboardBoxWrapperRow .box {
+  width: 100%;
+  height: 100%;
+  background: #ccc;
+}
+
+.dashboardBoxWrapperRow .graphBox {
+  background-image: linear-gradient(#1a05b5, #2a6ff7);
+  border-radius: 10px;
+  padding: 1.5625rem;
+}
+
+.toggleIcon {
+  font-size: 2rem;
+  color: #000;
+}
+
+.toggleIcon svg {
+  color: #fff; /* Removed redundant font-size as it's already set in parent */
+  opacity: 1;
+}
+
+.graphBox h4,
+.dashboardBox .col1 h4 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.graphBox h3 {
+  font-size: 3rem;
+}
+
+.graphBox p {
+  font-size: 1.8rem;
+}
+
+.card {
+  margin: 20px 0;
+  border-radius: 10px;
+}
+
+.card .hd,
+.card .cardFilter h4 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #403e57;
+}
+
+.card .cardFilter .css-w76bbz-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select {
+  font-size: 1.4rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.table .thead-dark th {
+  background-color: #1866ee;
+  border-color: rgba(255, 255, 255, 0.1);
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.table tbody tr td {
+  font-size: 1.6rem;
+  color: #403e57;
+  font-weight: 500;
+  text-align: center;
+  width: 300px;
+}
+
+.table tbody .actions {
+  justify-content: center;
+}
+
+.table tbody .actions button {
+  width: 37px;
+  height: 37px;
+  margin: 0 5px;
+}
+
+.table tbody .actions button.secondary {
+  background-color: rgba(203, 60, 231, 0.2);
+}
+
+.table tbody .actions button.success {
+  background-color: rgba(26, 159, 83, 0.2);
+}
+
+.table tbody .actions button.error {
+  background-color: rgba(241, 17, 51, 0.2);
+}
+
+.table tbody .actions button svg {
+  font-size: 2rem;
+}
+
+.table.v-align td {
+  vertical-align: middle;
+}
+
+.table td .imgWrapper {
+  width: 25%;
+  flex: 0 0 25%;
+}
+
+.table td .info {
+  width: 75%;
+  flex: 0 0 75%;
+  margin-left: 12px;
+}
+
+.table td .old,
+.table td .new {
+  display: block;
+  width: 100%;
+}
+
+.table td .info h6 {
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.table td .info p {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  opacity: 0.8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 0;
+}
+
+.table.v-align .productBox {
+  width: 250px;
+  align-items: center;
+  justify-content: center;
+}
+
+.tableFooter .pagination {
+  margin-left: auto;
+}
+
+.tableFooter nav ul li button {
+  font-size: 1.4rem;
+}
+
+.tableFooter p {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 0;
+  line-height: 3.25rem; /* Replaced px with rem */
+}

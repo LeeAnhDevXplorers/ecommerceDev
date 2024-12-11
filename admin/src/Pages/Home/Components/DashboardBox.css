@@ -1,0 +1,94 @@
+
+
+.dashboardBox .col1 span {
+  font-size: 4rem !important;
+  font-weight: bold;
+  line-height: 45px;
+}
+
+.dashboardBox .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  border-radius: 5px;
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.2)
+  );
+}
+
+.dashboardBox .icon svg {
+  font-size: 4rem;
+  opacity: 0.4;
+  color: #fff;
+}
+
+.dashboardBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: left;
+  position: relative;
+  color: #fff;
+  width: 48%;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 20px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.dashboardBox .toggleIcon {
+  font-size: 2.2rem;
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  min-width: 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.dashboardBox .chart {
+  opacity: 0.1;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.dashboardBox .chart svg {
+  font-size: 16rem;
+  color: #000;
+}
+
+.dashboardBox .bottomElm {
+  position: relative;
+  top: 15px;
+}
+
+.dashboardBox
+  .bottomElm
+  .css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+  width: 180px;
+}
+
+.MuiPaper-elevation .MuiMenu-list {
+  width: 100%;
+}
+
+.MuiPaper-elevation .MuiMenu-list .MuiMenuItem-root {
+  font-size: 1.6rem !important;
+}
+
+.MuiPaper-elevation .MuiMenu-list .MuiMenuItem-root svg {
+  font-size: 2rem;
+  color: #000;
+  margin: 0 10px;
+}
+
+.bottomElm h5 {
+  font-size: 1.4rem;
+}

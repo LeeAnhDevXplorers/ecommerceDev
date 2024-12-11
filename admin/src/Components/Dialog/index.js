@@ -1,0 +1,1 @@
+export {default as DialogDelete} from "./DialogDelete.jsx"

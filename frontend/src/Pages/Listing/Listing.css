@@ -1,0 +1,71 @@
+.product_Listing_Page {
+  padding: 35px 0;
+}
+
+.product_Listing_Page .productListing {
+  gap: 20px;
+}
+ 
+.product_Listing_Page .productListing .content_right {
+  width: 80%;
+  flex: 0 0 80%;
+  padding:3.5rem;
+}
+
+.content_right .showBy{
+  width: 100%;
+  height: 50px;
+  background-color: #f7f8fd;
+  padding: 1.5rem 2.5rem;
+}
+
+.content_right .showBy .btnWrapper button{
+  min-width: 3.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+}
+
+.content_right .showBy .btnWrapper button svg{
+  color: #000;
+  font-size: 1.8rem;
+  opacity: 0.5;
+  transition: all 0.3s ease-in-out;
+}
+
+.content_right .showBy .btnWrapper button.atc svg {
+  opacity: 1;
+}
+
+.content_right .showBy .btnWrapper button:hover svg{
+  opacity: 1;
+}
+
+.content_right .showBy .showByFilter button{
+  min-width: auto;
+  color: #000;
+  font-size: 1.3rem;
+}
+
+.content_right .showBy .showByFilter button svg{
+  opacity: 1;
+  color: #000;
+  margin-left: 5px;
+}
+.showPerDrop .MuiPaper-root {
+  width: 80px;
+}
+
+.showPerDrop ul li {
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+.productListings {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+

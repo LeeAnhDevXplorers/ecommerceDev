@@ -1,0 +1,269 @@
+.card h5 {
+  font-size: 2.4rem;
+}
+
+.card nav ol li {
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.card nav ol li span {
+  font-size: 1.4rem;
+}
+
+.card nav ol li a svg {
+  font-size: 2rem;
+}
+
+.productDetailsSection h5 {
+  color: #403e57;
+  font-size: 1.8rem;
+}
+
+.productDetailsSection p {
+  line-height: 2.5rem;
+  color: #403e57;
+}
+
+.productDetailsSection .productInfo .icon {
+  width: 18%;
+  flex: 0 0 18%;
+}
+
+.productDetailsSection .productInfo .icon svg {
+  font-size: 2.5rem;
+  color: #5e5d72;
+}
+
+.productDetailsSection .productInfo .name {
+  width: 82%;
+  flex: 0 0 82%;
+  font-weight: 600;
+  font-size: 1.6rem;
+  color: #5e5d72;
+  margin-left: 10px;
+}
+
+.productDetailsSection .productInfo .row {
+  margin-bottom: 14px;
+}
+
+.productDetailsSection .productInfo .row .col-sm-9 {
+  display: flex;
+  align-items: center;
+}
+
+.productDetailsSection .productInfo .row .col-sm-9 span {
+  opacity: 0.7;
+  font-size: 1.6rem;
+  margin-left: 10px;
+}
+
+.productDetailsSection .productInfo .tags {
+  margin-bottom: 0;
+}
+
+.productDetailsSection .productInfo .tags li span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d8d8d8;
+  border-radius: 5px;
+  font-size: 1.4rem;
+  padding: 5px 10px;
+  color: #000;
+}
+
+.productDetailsSection .productInfo .tags li span:first-child {
+  margin-left: 0;
+}
+
+.sliderWrapper {
+  width:100%;
+  margin: auto;
+}
+
+.sliderWrapper h6,
+.productWrapper h6 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+/* Swiper container - tối ưu cho không gian nhỏ hơn */
+.swiper {
+  position: relative;
+  width: 100%;
+  height: auto; /* Đặt chiều cao tự động để phù hợp với tỷ lệ */
+}
+
+/* Swiper slide - Điều chỉnh kích thước nhỏ hơn */
+.swiper-slide {
+  width: 100%; /* Bảo đảm rằng hình ảnh chiếm toàn bộ chiều ngang */
+  height: auto;
+  display: flex;
+  justify-content: center; /* Căn giữa nội dung theo chiều ngang */
+  align-items: center; /* Căn giữa nội dung theo chiều dọc */
+  padding: 10px;
+}
+
+
+/* Ảnh trong Swiper - Đảm bảo ảnh không bị méo */
+.swiper-slide img {
+  width: 100%;
+  height: auto; /* Đảm bảo chiều cao tự động dựa trên chiều rộng, giữ nguyên tỷ lệ */
+  object-fit: cover; /* Bảo đảm ảnh lấp đầy container mà không méo */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+
+/* Thu nhỏ slide navigation thumbnails */
+.swiper-slide .item {
+  border: 2px dashed #ccc;
+  padding: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.swiper-slide .item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Giữ cho thumbnail không bị méo */
+  border-radius: 4px;
+}
+
+.swiper-slide .item_active img {
+  border: 2px solid #007bff;
+}
+
+/* Custom Swiper navigation buttons */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #0056b3;
+}
+
+/* ----------------- */
+
+.rating-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.rating-analytics {
+  width: 50%;
+}
+
+.rating-bar {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+.rating-bar span {
+  width: 50px;
+  font-size: 1.4rem;
+}
+.bar {
+  background-color: #1a3b6b;
+  height: 10px;
+  width: 100%;
+  position: relative;
+  margin: 0 10px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.bar-fill {
+  background-color: #ffc107;
+  height: 100%;
+  position: absolute;
+}
+.rating-bar .count {
+  width: 30px;
+}
+.rating-summary {
+  text-align: center;
+}
+
+.rating-summary p {
+  font-size: 1.6rem !important;
+}
+.rating-summary h1 {
+  font-size: 60px;
+  margin: 10px 0;
+}
+.stars {
+  color: #ffc107;
+}
+
+.review_section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.review_section .review_row {
+  width: 100%;
+  height: auto;
+  background-color: #ededed;
+  padding: 35px;
+  border-radius: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  margin: 15px 0;
+}
+.userInfo .info span {
+  display: block;
+  font-size: 1.3rem;
+}
+
+.userInfo .info h5 {
+  margin-bottom: 0;
+  color: #403e57;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.css-i0l71t-MuiRating-root {
+  display: inline-flex !important;
+  position: relative !important;
+  font-size: 1.5rem !important;
+  color: rgb(250, 175, 0) !important;
+  cursor: pointer !important;
+  text-align: left !important;
+  width: min-content !important;
+  -webkit-tap-highlight-color: transparent !important;
+  pointer-events: none !important;
+}
+
+.css-i0l71t-MuiRating-root svg {
+  font-size: 2.6rem;
+}
+
+.review_section .review_row.reply {
+  margin-left: auto;
+  width: 90%;
+}
+
+.review_form textarea {
+  background: #f4f4f4 !important;
+  border: 1px solid #dbdbdb !important;
+  color: #000c;
+  border-radius: 10px;
+  height: 200px;
+  outline: #ffdead !important;
+  padding: 15px;
+  width: 100%;
+  font-size: 2rem;
+}
+
+.review_form button {
+  width: 100%;
+  padding: 10px 25px;
+  margin-top: 10px;
+}
