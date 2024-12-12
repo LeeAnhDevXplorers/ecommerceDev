@@ -3,7 +3,6 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import React, { useContext, useEffect, useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
-import LazyLoad from 'react-lazy-load';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';

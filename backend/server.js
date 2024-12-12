@@ -12,26 +12,28 @@ import psizeRouter from './controllersRouter/productSize.js';
 import pWeightRouter from './controllersRouter/productWeigth.js';
 import subCatRouter from './controllersRouter/subCategory.js';
 import userRouter from './controllersRouter/users.js';
+import searchRouter from './controllersRouter/search.js';
 import authJwt from './helper/jwt.js';
 const app = express();
 app.use(express.json());
 
 app.use(cors());
 app.options('*', cors());
-app.use(authJwt());
+// app.use(authJwt());
 
 // Router
 app.use('/uploads', express.static('uploads'));
-app.use('/api/category', categoryRouter);
+app.use('/api/category',  categoryRouter);
 app.use('/api/subcategory', subCatRouter);
-app.use('/api/products', productRouter);
+app.use('/api/products', authJwt(), productRouter);
 app.use('/api/weight', pWeightRouter);
 app.use('/api/prams', pRamRouter);
 app.use('/api/psize', psizeRouter);
 app.use('/api/user', userRouter);
-app.use('/api/cart', cartRouter);
-app.use('/api/orders', ordersRouter);
+app.use('/api/cart',  authJwt(),  cartRouter);
+app.use('/api/orders',  authJwt(), ordersRouter);
 app.use('/api/productReview', pReviewRouter);
+app.use('/api/search', searchRouter);
 
 // Connect to MongoDB
 connectDB();

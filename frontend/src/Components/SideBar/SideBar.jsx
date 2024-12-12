@@ -49,6 +49,7 @@ const SideBar = (props) => {
                 context.subCatData?.map((item, index) => {
                   return (
                     <FormControlLabel
+                      key={index}
                       value={item?._id}
                       control={<Radio />}
                       label={item?.subCat}

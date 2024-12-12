@@ -17,12 +17,14 @@ import SignIn from './Pages/SignIn/SignIn';
 import SignUp from './Pages/SignUp/SignUp';
 import { fetchDataFromApi, postData } from './utils/api';
 import Orders from './Pages/Orders/Orders';
+import Search from './Pages/Listing/Listing';
 
 const MyContext = createContext();
 
 const App = () => {
   const [countryList, setCountruList] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState('');
+  const [searchData, setSearchData] = useState([])
   const [isOpenProductModal, setisOpenProductModal] = useState({
     id: '',
     open: false,
@@ -156,6 +158,8 @@ const App = () => {
     cartData,
     setCartData,
     getCartData,
+    searchData,
+    setSearchData
   };
   return (
     <BrowserRouter>
@@ -163,7 +167,7 @@ const App = () => {
         <Snackbar
           open={alertBox.open}
           autoHideDuration={3000}
-          anchorOrigin={{ vertical: 'center', horizontal: 'center' }}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
           onClose={handleClose}
         >
           <Alert
@@ -180,6 +184,7 @@ const App = () => {
         <Routes>
           <Route path="/" exact={true} element={<Home />} />
           <Route path="/subCat/:id" exact={true} element={<Listing />} />
+          <Route path="/cat/:id" exact={true} element={<Listing />} />
           <Route
             path="/product/:id"
             exact={true}
@@ -190,6 +195,7 @@ const App = () => {
           <Route path="/signUp" exact={true} element={<SignUp />} />
           <Route path="/checkout" exact={true} element={<Checkout />} />
           <Route path="/orders" exact={true} element={<Orders />} />
+          <Route path="/search" exact={true} element={<Search />} />
         </Routes>
         {isHeaderFooterShow === true && <Footer />}
 

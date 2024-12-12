@@ -13,7 +13,7 @@ import SideBar from '../../Components/SideBar/SideBar';
 import { assets } from '../../assets/assets';
 import { fetchDataFromApi } from '../../utils/api';
 import './Listing.css';
-const Listing = (props) => {
+const Search = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [productData, setProductData] = useState([]);
   const [productView, setProductView] = useState('four');
@@ -26,16 +26,18 @@ const Listing = (props) => {
   };
 
   const { id } = useParams();
+
   useEffect(() => {
-    fetchDataFromApi(`/api/products?subName=${id}`).then((res) => {
-      setProductData(res.data);
-    });
-  }, [id]);
+    setIsLoading(true);
+    setProductData(context.searchData);
+    console.log(context.searchData);
+    setIsLoading(false);
+  }, [context.searchData]);
 
   const filterData = (subName) => {
     setTimeout(() => {
       fetchDataFromApi(`/api/products?subName=${subName}`).then((res) => {
-        setProductData(res.data);
+        // setProductData(res.data);
       });
     }, 3000); // Trì hoãn 3 giây
   };
@@ -44,7 +46,7 @@ const Listing = (props) => {
     fetchDataFromApi(
       `/api/products?minPrice=${price[0]}&maxPrice=${price[1]}&subName=${subName}`
     ).then((res) => {
-      setProductData(res.data);
+      // setProductData(res.data);
     });
   };
 
@@ -145,4 +147,4 @@ const Listing = (props) => {
   );
 };
 
-export default Listing;
+export default Search;

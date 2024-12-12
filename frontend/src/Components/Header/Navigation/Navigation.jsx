@@ -1,4 +1,7 @@
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Tab from '@mui/material/Tab';
+import Tabs, { tabsClasses } from '@mui/material/Tabs';
 import React, { useContext, useState } from 'react';
 import { FaAngleRight } from 'react-icons/fa';
 import { FaAngleDown } from 'react-icons/fa6';
@@ -7,6 +10,11 @@ import { Link } from 'react-router-dom';
 import { MyContext } from '../../../App';
 import './Navigation.css';
 const Navigation = (props) => {
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   const context = useContext(MyContext);
   const [isopenSidebarVal, setisopenSidebarVal] = useState(false);
   return (
@@ -60,7 +68,40 @@ const Navigation = (props) => {
             </div>
           </div>
           <div className="col-sm-10 navPart2 d-flex align-items-center">
-            <ul className="list list-inline ml-auto">
+            <Box
+              sx={{
+                flexGrow: 1,
+                maxWidth: { xs: 200, sm: 800 },
+                bgcolor: 'background.paper',
+              }}
+              className="ml-auto"
+            >
+              <Tabs
+                onChange={handleChange}
+                value={value}
+                variant="scrollable"
+                scrollButtons
+                aria-label="visible arrows tabs example"
+                sx={{
+                  [`& .${tabsClasses.scrollButtons}`]: {
+                    '&.Mui-disabled': { opacity: 0.3 },
+                  },
+                }}
+              >
+                {context.subCatData?.length !== 0 &&
+                  context.subCatData?.map((item, index) => {
+                    return (
+                      <Tab
+                        label={item.subCat}
+                        href={`/subCat/${item?.id}`}
+                        key={index}
+                      />
+                    );
+                  })}
+               
+              </Tabs>
+            </Box>
+            {/* <ul className="list list-inline ml-auto">
               <li className="list-inline-item">
                 <Link to="/">
                   <Button> Home </Button>
@@ -70,7 +111,7 @@ const Navigation = (props) => {
                 props.navData?.map((item, index) => {
                   return (
                     <li className="list-inline-item" key={index}>
-                      <Link to="">
+                      <Link to={`/cat/${item?.id}`}>
                         <Button> {item?.name} </Button>
                       </Link>
                       <div className="submenu shadow">
@@ -86,7 +127,7 @@ const Navigation = (props) => {
                     </li>
                   );
                 })}
-            </ul>
+            </ul> */}
           </div>
         </div>
       </div>
