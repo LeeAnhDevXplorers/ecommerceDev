@@ -6,10 +6,11 @@ const router = express.Router();
 // API route
 router.get('/', async (req, res) => {
   try {
-    const query = req.query.q;
+    // Lấy truy vấn và loại bỏ khoảng trắng đầu cuối
+    const query = req.query.q?.trim();
 
-    if (!query) {
-      return res.status(400).json({ msg: 'Query is required' });
+    if (!query || query.length === 0) {
+      return res.status(400).json({ msg: 'Truy vấn không được để trống' });
     }
 
     // Sử dụng collation để hỗ trợ tìm kiếm tiếng Việt
@@ -23,8 +24,8 @@ router.get('/', async (req, res) => {
 
     res.json(items);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ msg: 'Server error' });
+    console.error('Lỗi server:', error);
+    res.status(500).json({ msg: 'Có lỗi xảy ra từ phía server, vui lòng thử lại sau' });
   }
 });
 

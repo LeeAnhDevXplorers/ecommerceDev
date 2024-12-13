@@ -181,6 +181,7 @@ router.post('/create', upload.array('images'), async (req, res) => {
       ramName,
       sizeName,
       isFeatured,
+      location
     } = req.body;
 
     // Validate category and sub-category IDs
@@ -237,6 +238,7 @@ router.post('/create', upload.array('images'), async (req, res) => {
       ramName: ramIds,
       sizeName: sizeIds,
       isFeatured: isFeatured || false,
+      location
     });
 
     const savedProduct = await newProduct.save();
@@ -256,67 +258,89 @@ router.post('/create', upload.array('images'), async (req, res) => {
 });
 
 // API PUT để cập nhật sản phẩm
-router.put('/:id', upload.array('images'), async (req, res) => {
+router.put("/:id", upload.array("images"), async (req, res) => {
   try {
-    console.log('Bắt đầu cập nhật sản phẩm với ID:', req.params.id);
-    console.log('Dữ liệu nhận được từ client:', req.body); // Log toàn bộ dữ liệu nhận từ client
+    console.log("Bắt đầu cập nhật sản phẩm với ID:", req.params.id);
+    console.log("Dữ liệu nhận được từ client:", req.body); // Log toàn bộ dữ liệu nhận từ client
 
     // Tìm sản phẩm theo ID
     const product = await Products.findById(req.params.id);
     if (!product) {
-      console.log('Không tìm thấy sản phẩm với ID:', req.params.id);
+      console.log("Không tìm thấy sản phẩm với ID:", req.params.id);
       return res.status(404).json({
         success: false,
-        message: 'Không tìm thấy sản phẩm.',
+        message: "Không tìm thấy sản phẩm.",
       });
     }
-    console.log('Sản phẩm tìm thấy:', product);
+    console.log("Sản phẩm tìm thấy:", product);
 
     // Kiểm tra các trường cần cập nhật, nếu không có dữ liệu thì set thành empty hoặc null
+    const updateData = {
+      name: req.body.name || product.name,
+      description: req.body.description || product.description,
+      images: req.body.images || product.images, // Giữ hình ảnh cũ nếu không có hình ảnh mới
+      brand: req.body.brand || product.brand,
+      oldPrice: req.body.oldPrice || product.oldPrice,
+      category: req.body.category || product.category,
+      subCat: req.body.subCat || product.subCat,
+      catName: req.body.catName || product.catName,
+      subName: req.body.subName || product.subName,
+      countInStock: req.body.countInStock || product.countInStock,
+      discount: req.body.discount || product.discount,
+      location: req.body.location || product.location,
+
+      // Nếu không có dữ liệu cho các trường weightName, ramName, sizeName, sẽ set thành null (hoặc mảng trống)
+      weightName: req.body.weightName
+        ? req.body.weightName.split(",")
+        : product.weightName,
+      ramName: req.body.ramName ? req.body.ramName.split(",") : product.ramName,
+      sizeName: req.body.sizeName
+        ? req.body.sizeName.split(",")
+        : product.sizeName,
+
+      isFeatured:
+        req.body.isFeatured !== undefined
+          ? req.body.isFeatured
+          : product.isFeatured,
+    };
+
+    // Tính toán lại giá nếu có oldPrice và discount được cung cấp
+    if (
+      updateData.oldPrice &&
+      updateData.discount >= 0 &&
+      updateData.discount <= 100
+    ) {
+      updateData.price =
+        updateData.oldPrice - (updateData.oldPrice * updateData.discount) / 100;
+    } else {
+      updateData.price = product.price; // Giữ giá cũ nếu không có dữ liệu mới
+    }
+
     const updatedProduct = await Products.findByIdAndUpdate(
       req.params.id,
+      updateData,
       {
-        name: req.body.name || product.name,
-        description: req.body.description || product.description,
-        images: req.body.images || product.images, // Giữ hình ảnh cũ nếu không có hình ảnh mới
-        brand: req.body.brand || product.brand,
-        price: req.body.price || product.price, // Nếu không có price mới, giữ price cũ
-        oldPrice: req.body.oldPrice || product.oldPrice,
-        category: req.body.category || product.category,
-        subCat: req.body.subCat || product.subCat,
-        catName: req.body.catName || product.catName,
-        subName: req.body.subName || product.subName,
-        countInStock: req.body.countInStock || product.countInStock,
-        discount: req.body.discount || product.discount,
-
-        // Nếu không có dữ liệu cho các trường weightName, ramName, sizeName, sẽ set thành null (hoặc mảng trống)
-        weightName: req.body.weightName ? req.body.weightName.split(',') : [], // Nếu không có dữ liệu, set thành mảng trống
-        ramName: req.body.ramName ? req.body.ramName.split(',') : [], // Nếu không có dữ liệu, set thành mảng trống
-        sizeName: req.body.sizeName ? req.body.sizeName.split(',') : [], // Nếu không có dữ liệu, set thành mảng trống
-
-        isFeatured:
-          req.body.isFeatured !== undefined
-            ? req.body.isFeatured
-            : product.isFeatured, // Giữ giá trị cũ nếu không có update
-      },
-      { new: true, runValidators: true } // Trả về sản phẩm đã cập nhật
+        new: true,
+        runValidators: true,
+      }
     );
 
-    console.log('Sản phẩm đã được cập nhật thành công:', updatedProduct); // Log sản phẩm đã cập nhật
+    console.log("Sản phẩm đã được cập nhật thành công:", updatedProduct); // Log sản phẩm đã cập nhật
     return res.status(200).json({
       success: true,
-      message: 'Cập nhật sản phẩm thành công.',
+      message: "Cập nhật sản phẩm thành công.",
       product: updatedProduct,
     });
   } catch (error) {
-    console.error('Lỗi khi cập nhật sản phẩm:', error.message);
+    console.error("Lỗi khi cập nhật sản phẩm:", error.message);
     res.status(500).json({
       success: false,
-      message: 'Lỗi máy chủ.',
+      message: "Lỗi máy chủ.",
       error: error.message,
     });
   }
 });
+
 
 // Delete product route
 router.delete('/:id', async (req, res) => {

@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
   name: {
@@ -29,20 +29,20 @@ const productSchema = new mongoose.Schema({
   },
   catName: {
     type: String,
-    default: '',
+    default: "",
   },
   subName: {
     type: String,
-    default: '',
+    default: "",
   },
   category: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Category',
+    ref: "Category",
     required: true,
   },
   subCat: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'SubCategory',
+    ref: "SubCategory",
     required: true,
   },
   countInStock: {
@@ -64,24 +64,25 @@ const productSchema = new mongoose.Schema({
       validator: function (value) {
         return value >= 0 && value <= 100; // Xác thực tỷ lệ giảm giá
       },
-      message: 'Discount must be between 0 and 100',
+      message: "Discount must be between 0 and 100",
     },
   },
   ramName: {
     type: [mongoose.Schema.Types.ObjectId],
-    ref: 'ProductRams',
+    ref: "ProductRams",
     required: true,
   },
   sizeName: {
     type: [mongoose.Schema.Types.ObjectId],
-    ref: 'ProductSize',
+    ref: "ProductSize",
     required: true,
   },
   weightName: {
     type: [mongoose.Schema.Types.ObjectId],
-    ref: 'ProductWeigth',
+    ref: "ProductWeigth",
     required: true,
   },
+  location: { type: String, required: true },
   dateCreated: {
     type: Date,
     default: Date.now,
@@ -89,7 +90,7 @@ const productSchema = new mongoose.Schema({
 });
 
 // Tính toán giá mới dựa trên discount và oldPrice
-productSchema.pre('save', function (next) {
+productSchema.pre("save", function (next) {
   if (this.discount >= 0 && this.discount <= 100) {
     this.price = this.oldPrice - (this.oldPrice * this.discount) / 100;
   } else {
@@ -99,12 +100,12 @@ productSchema.pre('save', function (next) {
 });
 
 // Virtual field for id
-productSchema.virtual('id').get(function () {
+productSchema.virtual("id").get(function () {
   return this._id.toHexString();
 });
 
 // Đảm bảo giá trị trả về không có dấu phân cách
-productSchema.set('toJSON', {
+productSchema.set("toJSON", {
   virtuals: true,
   transform: function (doc, ret) {
     // Đảm bảo giá trị là số nguyên và không có dấu phân cách
@@ -114,4 +115,4 @@ productSchema.set('toJSON', {
   },
 });
 
-export const Products = mongoose.model('Products', productSchema);
+export const Products = mongoose.model("Products", productSchema);

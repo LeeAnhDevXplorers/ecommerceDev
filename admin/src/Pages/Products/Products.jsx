@@ -41,22 +41,23 @@ const Products = () => {
   // Khởi tạo trạng thái form với các trường dữ liệu
   const context = useContext(MyContext);
   const [formFields, setFormFields] = useState({
-    name: '',
-    description: '',
+    name: "",
+    description: "",
     images: [],
-    brand: '',
-    price: '',
-    oldPrice: '',
-    category: '',
-    subCat: '',
-    catName: '',
-    subName: '',
-    countInStock: '',
-    discount: '',
+    brand: "",
+    price: "",
+    oldPrice: "",
+    category: "",
+    subCat: "",
+    catName: "",
+    subName: "",
+    countInStock: "",
+    discount: "",
     weightName: [],
     ramName: [],
     sizeName: [],
     isFeatured: false,
+    location : ""
   });
 
   useEffect(() => {
@@ -209,19 +210,20 @@ const Products = () => {
         setFormFields({
           name: res.name,
           description: res.description,
-          brand: res.brand || '',
-          price: res.price || '',
-          oldPrice: res.oldPrice || '',
-          category: res.category ? res.category.name : '',
-          subCat: res.subCat || '',
+          brand: res.brand || "",
+          price: res.price || "",
+          oldPrice: res.oldPrice || "",
+          category: res.category ? res.category.name : "",
+          subCat: res.subCat || "",
           subName: res.subName,
-          catName: res.catName || '',
-          countInStock: res.countInStock || '',
+          catName: res.catName || "",
+          countInStock: res.countInStock || "",
+          location: res.location || "",
           isFeatured: res.isFeatured || false,
-          discount: res.discount || '',
-          weightName: res.weightName ? res.weightName.join(',') : '', // Gán mảng weightName vào chuỗi
-          ramName: res.ramName ? res.ramName.join(',') : '', // Gán mảng ramName vào chuỗi
-          sizeName: res.sizeName ? res.sizeName.join(',') : '', // Gán mảng sizeName vào chuỗi
+          discount: res.discount || "",
+          weightName: res.weightName ? res.weightName.join(",") : "", // Gán mảng weightName vào chuỗi
+          ramName: res.ramName ? res.ramName.join(",") : "", // Gán mảng ramName vào chuỗi
+          sizeName: res.sizeName ? res.sizeName.join(",") : "", // Gán mảng sizeName vào chuỗi
         });
 
         // Kiểm tra và log thông tin hình ảnh
@@ -259,6 +261,7 @@ const Products = () => {
       formData.append('subCat', formFields.subCat?.trim() || '');
       formData.append('catName', formFields.catName || '');
       formData.append('subName', formFields.subName || '');
+      formData.append("location", formFields.location || "");
       formData.append('countInStock', Number(formFields.countInStock) || 0);
       formData.append('discount', formFields.discount || 0);
       formData.append('isFeatured', Boolean(formFields.isFeatured));

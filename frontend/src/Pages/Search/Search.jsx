@@ -1,26 +1,31 @@
-import { Button } from '@mui/material';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import Pagination from '@mui/material/Pagination';
-import React, { useEffect, useState } from 'react';
-import { GrMenu } from 'react-icons/gr';
-import { HiViewGrid } from 'react-icons/hi';
-import { TbGridDots } from 'react-icons/tb';
-import { TfiAngleDown, TfiLayoutGrid4Alt } from 'react-icons/tfi';
-import { useParams } from 'react-router-dom';
-import ProductItem from '../../Components/ProductItem/ProductItem';
-import SideBar from '../../Components/SideBar/SideBar';
-import { assets } from '../../assets/assets';
-import { fetchDataFromApi } from '../../utils/api';
-import './Listing.css';
-const Search = (props) => {
+import { Button } from "@mui/material";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Pagination from "@mui/material/Pagination";
+import React, { useContext, useEffect, useState } from "react";
+import { GrMenu } from "react-icons/gr";
+import { HiViewGrid } from "react-icons/hi";
+import { TbGridDots } from "react-icons/tb";
+import { TfiAngleDown, TfiLayoutGrid4Alt } from "react-icons/tfi";
+import { useParams } from "react-router-dom";
+import ProductItem from "../../Components/ProductItem/ProductItem";
+import SideBar from "../../Components/SideBar/SideBar";
+import { assets } from "../../assets/assets";
+import { fetchDataFromApi } from "../../utils/api";
+import "./Listing.css";
+import { MyContext } from "../../App";
+
+const Listing = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [productData, setProductData] = useState([]);
-  const [productView, setProductView] = useState('four');
+  const [productView, setProductView] = useState("four");
+  const context = useContext(MyContext);
   const open = Boolean(anchorEl);
+
   const handleClick = (even) => {
     setAnchorEl(even.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -28,25 +33,22 @@ const Search = (props) => {
   const { id } = useParams();
 
   useEffect(() => {
-    setIsLoading(true);
-    setProductData(context.searchData);
+    // Kiểm tra dữ liệu từ context
     console.log(context.searchData);
-    setIsLoading(false);
+    setProductData(context.searchData);
   }, [context.searchData]);
 
   const filterData = (subName) => {
-    setTimeout(() => {
-      fetchDataFromApi(`/api/products?subName=${subName}`).then((res) => {
-        // setProductData(res.data);
-      });
-    }, 3000); // Trì hoãn 3 giây
+    fetchDataFromApi(`/api/products?subName=${subName}`).then((res) => {
+      setProductData(res.data);
+    });
   };
 
   const filterByPrice = (price, subName) => {
     fetchDataFromApi(
       `/api/products?minPrice=${price[0]}&maxPrice=${price[1]}&subName=${subName}`
     ).then((res) => {
-      // setProductData(res.data);
+      setProductData(res.data);
     });
   };
 
@@ -72,32 +74,32 @@ const Search = (props) => {
               <img
                 className="w-100"
                 src={assets.banner3}
-                style={{ borderRadius: '8px' }}
+                style={{ borderRadius: "8px" }}
                 alt=""
               />
               <div className="showBy mt-3 mb-3 d-flex align-items-center">
                 <div className="d-flex align-items-center btnWrapper">
-                  <Button
-                    className={productView === 'one' && 'atc'}
-                    onClick={() => setProductView('one')}
+                   <Button
+                    className={productView === "one" && "atc"}
+                    onClick={() => setProductView("one")}
                   >
                     <GrMenu />
                   </Button>
                   <Button
-                    className={productView === 'two' && 'atc'}
-                    onClick={() => setProductView('two')}
+                    className={productView === "two" && "atc"}
+                    onClick={() => setProductView("two")}
                   >
                     <HiViewGrid />
                   </Button>
                   <Button
-                    className={productView === 'three' && 'atc'}
-                    onClick={() => setProductView('three')}
+                    className={productView === "three" && "atc"}
+                    onClick={() => setProductView("three")}
                   >
                     <TbGridDots />
                   </Button>
                   <Button
-                    className={productView === 'four' && 'atc'}
-                    onClick={() => setProductView('four')}
+                    className={productView === "four" && "atc"}
+                    onClick={() => setProductView("four")}
                   >
                     <TfiLayoutGrid4Alt />
                   </Button>
@@ -113,7 +115,7 @@ const Search = (props) => {
                     open={open}
                     onClose={handleClose}
                     MenuListProps={{
-                      'aria-labelledby': 'basic-button',
+                      "aria-labelledby": "basic-button",
                     }}
                   >
                     <MenuItem onClick={handleClose}>10</MenuItem>
@@ -125,15 +127,17 @@ const Search = (props) => {
               </div>
 
               <div className="productListings">
-                {productData?.map((item, index) => {
-                  return (
+                {productData.length > 0 ? (
+                  productData.map((item, index) => (
                     <ProductItem
                       key={index}
                       itemView={productView}
                       item={item}
                     />
-                  );
-                })}
+                  ))
+                ) : (
+                  <p>No products available</p>
+                )}
               </div>
 
               <div className="d-flex align-items-center justify-content-center mt-5">
@@ -147,4 +151,4 @@ const Search = (props) => {
   );
 };
 
-export default Search;
+export default Listing;

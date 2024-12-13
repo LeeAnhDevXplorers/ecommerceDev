@@ -2,30 +2,41 @@ import express from 'express';
 import { Orders } from '../models/orders.js';
 const router = express.Router();
 
-// GET endpoint to fetch all orders
+// GET endpoint to fetch orders for a specific user
 router.get('/', async (req, res) => {
   try {
+    const userId = req.query.userId; // Lấy userId từ query parameters
     const page = parseInt(req.query.page) || 1;
     const perPage = 8;
-    const totalPosts = await Orders.countDocuments();
+
+    // Kiểm tra xem userId có được cung cấp không
+    if (!userId) {
+      return res.status(400).json({ msg: 'userId is required' });
+    }
+
+    // Tính tổng số đơn hàng cho userId cụ thể
+    const totalPosts = await Orders.countDocuments({ userId: userId });
     const totalPages = Math.ceil(totalPosts / perPage);
 
+    // Kiểm tra xem trang yêu cầu có hợp lệ không
     if (page > totalPages) {
-      return res.status(404).json({ msg: 'không tìm thấy danh mục' });
+      return res.status(404).json({ msg: 'No orders found for this user' });
     }
-    const orders = await Orders.find()
+
+    // Lấy các đơn hàng cho userId cụ thể
+    const orders = await Orders.find({ userId: userId })
       .skip((page - 1) * perPage)
       .limit(perPage)
-      .exec(); // Lấy tất cả các đơn hàng
+      .exec();
+
+    // Trả về dữ liệu đơn hàng
     res.status(200).json({
       data: orders,
       totalPages: totalPages,
       page: page,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({ message: 'Error fetching orders', error: error.message });
+    res.status(500).json({ message: 'Error fetching orders', error: error.message });
   }
 });
 

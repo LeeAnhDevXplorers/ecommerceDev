@@ -1,7 +1,6 @@
 import FactCheckIcon from '@mui/icons-material/FactCheck';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Logout from '@mui/icons-material/Logout';
-import Settings from '@mui/icons-material/Settings';
 import { Avatar, Divider, ListItemIcon, Menu, MenuItem } from '@mui/material/';
 import Button from '@mui/material/Button';
 import React, { useContext } from 'react';
@@ -111,12 +110,14 @@ const Header = () => {
                           vertical: 'bottom',
                         }}
                       >
+                        <Link to="/my-account">
                         <MenuItem
                           onClick={handleClose}
                           sx={{ fontSize: '1.6rem' }}
                         >
                           <Avatar /> My account
                         </MenuItem>
+                        </Link>
                         <Divider />
                         <Link to="/orders">
                           <MenuItem onClick={handleClose}>

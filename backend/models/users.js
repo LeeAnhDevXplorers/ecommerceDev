@@ -1,33 +1,43 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const usersSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    require: true
+const usersSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    phone: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    images: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
   },
-  phone: {
-    type: String,
-    require: true,
-    unique: true
-
-  },
-  email: {
-    type: String,
-    require: true,
-    unique: true
-  },
-  password: {
-    type: String,
-    require: true
+  {
+    timestamps: true,
   }
-});
+);
 
-usersSchema.virtual('id').get(function () {
+usersSchema.virtual("id").get(function () {
   return this._id.toHexString();
 });
 
-usersSchema.set('toJSON', {
+usersSchema.set("toJSON", {
   virtuals: true,
 });
 
-export const Users = mongoose.model('Users', usersSchema);
+export const Users = mongoose.model("Users", usersSchema);

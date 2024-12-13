@@ -208,3 +208,76 @@ html {
   width: 1.6rem !important;
   height: 1.6rem !important;
 }
+
+.my-account .css-19wsa2m-MuiButtonBase-root-MuiTab-root {
+  font-weight: 600 !important;
+  text-transform: capitalize !important;
+  font-size: 1.4rem !important;
+}
+
+.my_account-box{
+  background-color: #fafafa;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.my_account-box .user-img {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 100%;
+  border: 2px solid #0858f7;
+  position: relative;
+}
+
+.my_account-box .user-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.user-img .overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+}
+
+.user-img .overlay svg {
+  font-size: 40px;
+  color: #fff;
+}
+
+.user-img:hover .overlay {
+  opacity: 1;
+}
+
+.user-img:hover .overlay input {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  opacity: 0;
+}
+
+.user-img .overlay input {
+  position: absolute;
+  top: 0%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  opacity: 0;
+}
+
+.css-1nmvbe4-MuiInputBase-root .MuiInputBase-input {
+  width: 100% !important;
+}

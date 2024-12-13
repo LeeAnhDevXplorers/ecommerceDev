@@ -1,0 +1,125 @@
+.lable {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  color: rgba(0, 0, 0, 0.5);
+  line-height: 1.8rem;
+}
+
+.name {
+  font-size: 1.4rem;
+  text-transform: capitalize;
+  color: #ff6a00;
+  font-weight: 600;
+  line-height: 1.8rem;
+}
+
+.icon-angle {
+  font-size: 1.6rem;
+}
+
+.locationModal .MuiPaper-elevation {
+  padding: 25px;
+  min-width: 500px;
+  position: relative;
+}
+
+.locationModal h3 {
+  font-size: 2.2rem;
+}
+.locationModal p {
+  font-size: 1.6rem;
+}
+
+.headerSearch {
+  max-width: 100%;
+  height: 45px;
+  background: #f3f4f7;
+  padding: 10px;
+  position: relative;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.headerSearch input {
+  background: transparent;
+  outline: none;
+  font-size: 1.4rem;
+  color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 22.5px;
+  border: 0px;
+  padding: 0px 20px;
+}
+
+.headerSearch button {  
+  position: absolute;
+  top: 1px;
+  right: 15px;
+  z-index: 100;
+  min-width: 40px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  color: #000;
+}
+
+.headerSearch button svg {
+  font-size: 25px;
+}
+
+.locationModal .countryList {
+  margin-bottom: 0;
+  max-height: 400px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.locationModal .countryList li {
+  width: 100%;
+  list-style: none;
+}
+
+.locationModal .countryList li button {
+  width: 100%;
+  text-transform: capitalize;
+  color: #000;
+  justify-content: flex-start;
+  font-size: 1.6rem;
+  padding: 15px 20px;
+}
+
+.locationModal .countryList li button:hover {
+  background-color: #ccc;
+}
+
+.locationModal .countryList li button.active {
+  background-color: rgba(255, 106, 0, 0.8);
+}
+
+.locationModal .close_ {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  color: #000;
+  min-width: 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.locationModal .close_ svg {
+  font-size: 2.2rem;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}

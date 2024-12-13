@@ -1,5 +1,5 @@
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import HomeIcon from '@mui/icons-material/Home';
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import HomeIcon from "@mui/icons-material/Home";
 import {
   Backdrop,
   Box,
@@ -10,19 +10,20 @@ import {
   FormControl,
   MenuItem,
   Select,
-} from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+} from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-import { emphasize, styled } from '@mui/material/styles';
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import { TiDelete } from 'react-icons/ti';
-import { MyContext } from '../../App';
-import { fetchDataFromApi, postData } from '../../utils/api';
-import './ProductUpload.css';
+import { emphasize, styled } from "@mui/material/styles";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { TiDelete } from "react-icons/ti";
+import { MyContext } from "../../App";
+import { fetchDataFromApi, postData } from "../../utils/api";
+import "./ProductUpload.css";
+import CountryDrop from "../../Components/CountryDrop/CountryDrop";
 
 const StyleBreadcrumb = styled(Chip)(({ theme }) => {
   const backgroundColor =
-    theme.palette.mode === 'light'
+    theme.palette.mode === "light"
       ? theme.palette.grey[100]
       : theme.palette.grey[800];
   return {
@@ -30,10 +31,10 @@ const StyleBreadcrumb = styled(Chip)(({ theme }) => {
     height: theme.spacing(3),
     color: theme.palette.text.primary,
     fontWeight: theme.typography.fontWeightRegular,
-    '&:hover, &:focus': {
+    "&:hover, &:focus": {
       backgroundColor: emphasize(backgroundColor, 0.06),
     },
-    '&:active': {
+    "&:active": {
       boxShadow: theme.shadows[1],
       backgroundColor: emphasize(backgroundColor, 0.12),
     },
@@ -74,28 +75,33 @@ const ProductUpload = () => {
 
   // Khởi tạo trạng thái form với các trường dữ liệu
   const [formFields, setFormFields] = useState({
-    name: '',
-    description: '',
+    name: "",
+    description: "",
     images: [],
-    brand: '',
-    price: '',
-    oldPrice: '',
-    category: '',
-    subCat: '',
-    catName: '',
-    subName: '',
-    countInStock: '',
+    brand: "",
+    price: "",
+    oldPrice: "",
+    category: "",
+    subCat: "",
+    catName: "",
+    subName: "",
+    countInStock: "",
     discount: 0,
     weightName: [],
     ramName: [],
     sizeName: [],
     isFeatured: false,
+    location,
   });
+
+  useEffect(() => {
+    formFields.location = context.selectedCountry;
+  }, [context.selectedCountry]);
 
   // Lấy danh mục sản phẩm khi component được render
   useEffect(() => {
     setLoading(true);
-    fetchDataFromApi('/api/category')
+    fetchDataFromApi("/api/category")
       .then((res) => {
         if (Array.isArray(res.categoryList)) {
           setCatData(res.categoryList);
@@ -104,7 +110,7 @@ const ProductUpload = () => {
         }
       })
       .catch((error) => {
-        console.error('Lỗi khi lấy danh mục:', error);
+        console.error("Lỗi khi lấy danh mục:", error);
         setCatData([]);
       })
       .finally(() => {
@@ -117,15 +123,15 @@ const ProductUpload = () => {
       setLoading(true);
       try {
         const [prams, weights, sizes] = await Promise.all([
-          fetchDataFromApi('/api/prams'),
-          fetchDataFromApi('/api/weight'),
-          fetchDataFromApi('/api/psize'),
+          fetchDataFromApi("/api/prams"),
+          fetchDataFromApi("/api/weight"),
+          fetchDataFromApi("/api/psize"),
         ]);
         setPRamData(prams.data || []);
         setPWeigthData(weights.data || []);
         setPSizeData(sizes.data || []);
       } catch (error) {
-        console.error('Lỗi khi lấy dữ liệu:', error);
+        console.error("Lỗi khi lấy dữ liệu:", error);
       } finally {
         setLoading(false);
       }
@@ -139,7 +145,7 @@ const ProductUpload = () => {
     const fetchSubCategories = async () => {
       setLoading(true); // Bắt đầu fetch dữ liệu
       try {
-        await fetchDataFromApi('/api/subCategory').then((res) => {
+        await fetchDataFromApi("/api/subCategory").then((res) => {
           // Kiểm tra và lưu dữ liệu vào state
           if (Array.isArray(res.data)) {
             setSubCategories(res.data);
@@ -148,7 +154,7 @@ const ProductUpload = () => {
           }
         });
       } catch (error) {
-        console.error('Lỗi khi lấy subCategories:', error);
+        console.error("Lỗi khi lấy subCategories:", error);
         setSubCategories([]); // Set mảng trống nếu có lỗi
       } finally {
         setLoading(false); // Kết thúc fetch
@@ -160,10 +166,9 @@ const ProductUpload = () => {
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    console.log(`[DEBUG] Thay đổi input - Tên: ${name}, Giá trị: ${value}`);
     setFormFields((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
@@ -171,7 +176,7 @@ const ProductUpload = () => {
     const files = e.target.files;
     if (files.length === 0) return;
 
-    const validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+    const validTypes = ["image/jpeg", "image/png", "image/jpg"];
     const imgArr = Array.from(files)
       .filter((file) => validTypes.includes(file.type))
       .map((file) => URL.createObjectURL(file));
@@ -180,7 +185,7 @@ const ProductUpload = () => {
       context.setAlertBox({
         open: true,
         error: true,
-        msg: 'Chỉ được tải lên file ảnh (JPEG, PNG, JPG)!',
+        msg: "Chỉ được tải lên file ảnh (JPEG, PNG, JPG)!",
       });
       return;
     }
@@ -230,6 +235,7 @@ const ProductUpload = () => {
       ramName,
       sizeName,
       isFeatured,
+      location,
     } = formFields;
 
     // Kiểm tra các trường bắt buộc
@@ -238,67 +244,71 @@ const ProductUpload = () => {
       context.setAlertBox({
         open: true,
         error: true,
-        msg: 'Vui lòng nhập đầy đủ, không được bỏ trống!',
+        msg: "Vui lòng nhập đầy đủ, không được bỏ trống!",
       });
       return;
     }
 
     try {
       const fd = new FormData();
-      fd.append('name', name);
-      fd.append('category', category._id || category);
-      fd.append('subCat', subCat._id || subCat);
-      fd.append('catName', formFields.catName);
-      fd.append('subName', formFields.subName);
-      fd.append('description', description || '');
-      fd.append('brand', brand || '');
-      fd.append('oldPrice', oldPrice);
-      fd.append('countInStock', countInStock || 0);
-      fd.append('discount', discount || 0);
+      fd.append("name", name);
+      fd.append("category", category._id || category);
+      fd.append("subCat", subCat._id || subCat);
+      fd.append("catName", formFields.catName);
+      fd.append("subName", formFields.subName);
+      fd.append("description", description || "");
+      fd.append("brand", brand || "");
+      fd.append("oldPrice", oldPrice);
+      fd.append("countInStock", countInStock || 0);
+      fd.append("discount", discount || 0);
+      fd.append("location", location || "");
 
       // Gửi các trường nếu có
-      if (weightName.length) fd.append('weightName', weightName.join(','));
-      if (ramName.length) fd.append('ramName', ramName.join(','));
-      if (sizeName.length) fd.append('sizeName', sizeName.join(','));
+      if (weightName.length) fd.append("weightName", weightName.join(","));
+      if (ramName.length) fd.append("ramName", ramName.join(","));
+      if (sizeName.length) fd.append("sizeName", sizeName.join(","));
 
-      fd.append('isFeatured', Boolean(isFeatured));
+      fd.append("isFeatured", Boolean(isFeatured));
 
-      files.forEach((file) => fd.append('images', file));
+      files.forEach((file) => fd.append("images", file));
 
-      const response = await postData('/api/products/create', fd);
+      console.log(formFields);
+
+      const response = await postData("/api/products/create", fd);
 
       if (response.success) {
         context.setAlertBox({
           open: true,
           error: false,
-          msg: 'Bạn đã thêm sản phẩm thành công!',
+          msg: "Bạn đã thêm sản phẩm thành công!",
         });
         setFormFields({
-          name: '',
-          description: '',
+          name: "",
+          description: "",
           images: [],
-          brand: '',
-          oldPrice: '',
-          category: '',
-          subCat: '',
-          countInStock: '',
+          brand: "",
+          oldPrice: "",
+          category: "",
+          subCat: "",
+          countInStock: "",
           discount: 0,
           weightName: [],
           ramName: [],
           sizeName: [],
           isFeatured: false,
+          location: "",
         });
         setFiles([]);
         setPreviews([]);
-        navigate('/product/productlist');
+        navigate("/product/productlist");
       } else {
-        throw new Error(response.message || 'Thêm sản phẩm thất bại');
+        throw new Error(response.message || "Thêm sản phẩm thất bại");
       }
     } catch (error) {
       context.setAlertBox({
         open: true,
         error: true,
-        msg: error.message || 'Đã xảy ra lỗi, vui lòng thử lại.',
+        msg: error.message || "Đã xảy ra lỗi, vui lòng thử lại.",
       });
     } finally {
       setLoading(false);
@@ -353,8 +363,8 @@ const ProductUpload = () => {
                   <div className="form-group">
                     <h6>Danh mục</h6>
                     <Select
-                      value={formFields.category || ''}
-                      onChange={(e) => handleSelectChange(e, 'category')}
+                      value={formFields.category || ""}
+                      onChange={(e) => handleSelectChange(e, "category")}
                       displayEmpty
                       className="w-100"
                     >
@@ -391,7 +401,7 @@ const ProductUpload = () => {
                       </MenuItem>
                       {subCategories?.map((item, index) => (
                         <MenuItem key={index} value={item._id}>
-                          {item.subCat || 'No Subcategory'}
+                          {item.subCat || "No Subcategory"}
                         </MenuItem>
                       ))}
                     </Select>
@@ -441,7 +451,7 @@ const ProductUpload = () => {
                     <h6>Is Featured</h6>
                     <Select
                       value={formFields.isFeatured}
-                      onChange={(e) => handleSelectChange(e, 'isFeatured')}
+                      onChange={(e) => handleSelectChange(e, "isFeatured")}
                       name="isFeatured"
                       displayEmpty
                       className="w-100"
@@ -467,14 +477,14 @@ const ProductUpload = () => {
                 <div className="col">
                   <div className="form-group">
                     <h6>PRODUCT RAM</h6>
-                    <FormControl sx={{ m: 1, width: '100%' }}>
+                    <FormControl sx={{ m: 1, width: "100%" }}>
                       <Select
                         multiple
                         value={formFields.ramName || []} // Ensure this is an array
-                        onChange={(e) => handleSelectChange(e, 'ramName')}
+                        onChange={(e) => handleSelectChange(e, "ramName")}
                         renderValue={(selected) => (
                           <Box
-                            sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}
+                            sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}
                           >
                             {selected.map((value) => (
                               <Chip key={value} label={value} />
@@ -495,18 +505,18 @@ const ProductUpload = () => {
                 <div className="col">
                   <div className="form-group">
                     <h6>PRODUCT WEIGHT</h6>
-                    <FormControl sx={{ m: 1, width: '100%' }}>
+                    <FormControl sx={{ m: 1, width: "100%" }}>
                       <Select
                         multiple
                         value={formFields.weightName || []} // Ensure this is an array
-                        onChange={(e) => handleSelectChange(e, 'weightName')}
+                        onChange={(e) => handleSelectChange(e, "weightName")}
                         renderValue={(selected) => (
                           <Box
                             sx={{
-                              display: 'flex',
-                              flexWrap: 'wrap',
+                              display: "flex",
+                              flexWrap: "wrap",
                               gap: 0.5,
-                              fontSize: '1.6rem',
+                              fontSize: "1.6rem",
                             }}
                           >
                             {selected.map((value) => (
@@ -528,14 +538,14 @@ const ProductUpload = () => {
                 <div className="col">
                   <div className="form-group">
                     <h6>PRODUCT SIZE</h6>
-                    <FormControl sx={{ m: 1, width: '100%' }}>
+                    <FormControl sx={{ m: 1, width: "100%" }}>
                       <Select
                         multiple
                         value={formFields.sizeName || []} // Ensure this is an array
-                        onChange={(e) => handleSelectChange(e, 'sizeName')}
+                        onChange={(e) => handleSelectChange(e, "sizeName")}
                         renderValue={(selected) => (
                           <Box
-                            sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}
+                            sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}
                           >
                             {selected.map((value) => (
                               <Chip key={value} label={value} />
@@ -552,6 +562,12 @@ const ProductUpload = () => {
                       </Select>
                     </FormControl>
                   </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="form-group">
+                  <h5>LOCATION</h5>
+                  {context.countryList.length !== 0 && <CountryDrop />}
                 </div>
               </div>
             </div>
@@ -572,8 +588,8 @@ const ProductUpload = () => {
                       <span
                         className="lazy-load-image-background blur lazy-load-image-loaded"
                         style={{
-                          color: 'transparent',
-                          display: 'inline-block',
+                          color: "transparent",
+                          display: "inline-block",
                         }}
                       >
                         <img alt="image" className="w-100 h-100" src={item} />
@@ -585,7 +601,7 @@ const ProductUpload = () => {
                 <input
                   type="file"
                   multiple
-                  onChange={(e) => onChangeFile(e, '/api/products/upload')}
+                  onChange={(e) => onChangeFile(e, "/api/products/upload")}
                   name="images"
                 />
                 <div className="info">
@@ -616,9 +632,9 @@ const ProductUpload = () => {
       </form>
       <Backdrop
         sx={{
-          color: '#fff',
-          backgroundColor: 'rgba(0, 0, 0, 0.7)',
-          transition: 'opacity 0.3s ease-in-out',
+          color: "#fff",
+          backgroundColor: "rgba(0, 0, 0, 0.7)",
+          transition: "opacity 0.3s ease-in-out",
           zIndex: 9999,
         }}
         open={loading}

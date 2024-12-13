@@ -18,6 +18,7 @@ import SignUp from './Pages/SignUp/SignUp';
 import { fetchDataFromApi, postData } from './utils/api';
 import Orders from './Pages/Orders/Orders';
 import Search from './Pages/Listing/Listing';
+import MyAccount from './Pages/MyAccount/MyAccount';
 
 const MyContext = createContext();
 
@@ -33,7 +34,7 @@ const App = () => {
     msg: '',
     error: false,
     open: false,
-  });
+  }); 
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -48,6 +49,7 @@ const App = () => {
   const [addingInCart, setAddingInCart] = useState(false);
   const [cartData, setCartData] = useState();
   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
     getCountry('https://countriesnow.space/api/v0.1/countries/');
     fetchDataFromApi(`/api/category`).then((res) => {
       setCatData(res.categoryList);
@@ -56,13 +58,14 @@ const App = () => {
     fetchDataFromApi('/api/subCategory').then((res) => {
       setSubCatData(res.data);
     });
-    fetchDataFromApi(`/api/cart`).then((res) => {
+    fetchDataFromApi(`/api/cart?userId=${user?.userId}`).then((res) => {
       setCartData(res);
     });
   }, []);
 
   const getCartData = () => {
-    fetchDataFromApi(`/api/cart`).then((res) => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    fetchDataFromApi(`/api/cart?userId=${user?.userId}`).then((res) => {
       setCartData(res);
     });
   };
@@ -167,14 +170,14 @@ const App = () => {
         <Snackbar
           open={alertBox.open}
           autoHideDuration={3000}
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+          anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
           onClose={handleClose}
         >
           <Alert
             onClose={handleClose}
-            severity={alertBox.error === false ? 'success' : 'error'}
+            severity={alertBox.error === false ? "success" : "error"}
             variant="filled"
-            sx={{ fontSize: '1.4rem', width: '100%' }}
+            sx={{ fontSize: "1.4rem", width: "100%" }}
           >
             {alertBox.msg}
           </Alert>
@@ -196,6 +199,7 @@ const App = () => {
           <Route path="/checkout" exact={true} element={<Checkout />} />
           <Route path="/orders" exact={true} element={<Orders />} />
           <Route path="/search" exact={true} element={<Search />} />
+          <Route path="/my-account" exact={true} element={<MyAccount />} />
         </Routes>
         {isHeaderFooterShow === true && <Footer />}
 

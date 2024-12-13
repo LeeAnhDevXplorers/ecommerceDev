@@ -1,4 +1,4 @@
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 import {
   Box,
   Chip,
@@ -6,20 +6,23 @@ import {
   FormControl,
   MenuItem,
   Select,
-} from '@mui/material';
-import AppBar from '@mui/material/AppBar';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import Slide from '@mui/material/Slide';
-import { useTheme } from '@mui/material/styles';
-import TextField from '@mui/material/TextField';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import React, { useEffect, useState } from 'react';
-import ImageUpload from '../../../../Components/ImageUpload/ImageUpload';
-import { fetchDataFromApi } from '../../../../utils/api';
+} from "@mui/material";
+import AppBar from "@mui/material/AppBar";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import Slide from "@mui/material/Slide";
+import { useTheme } from "@mui/material/styles";
+import TextField from "@mui/material/TextField";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import React, { useEffect, useState } from "react";
+import ImageUpload from "../../../../Components/ImageUpload/ImageUpload";
+import { fetchDataFromApi } from "../../../../utils/api";
+import CountryDrop from "../../../../Components/CountryDrop/CountryDrop";
+import { useContext } from "react";
+import { MyContext } from "../../../../App";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -59,6 +62,7 @@ const ProductEditDialog = ({
   selectCat,
   handleSelectSubCatChange,
 }) => {
+  const context = useContext(MyContext)
   const theme = useTheme();
   const [loading, setLoading] = useState(false);
   const [catData, setCatData] = useState([]);
@@ -67,10 +71,13 @@ const ProductEditDialog = ({
   const [pWeigthData, setPWeigthData] = useState([]);
   const [pSizeData, setPSizeData] = useState([]);
 
+    useEffect(() => {
+      formFields.location = context.selectedCountry;
+    }, [context.selectedCountry]);
   // Fetch danh mục sản phẩm khi component được render
   useEffect(() => {
     setLoading(true);
-    fetchDataFromApi('/api/category')
+    fetchDataFromApi("/api/category")
       .then((res) => {
         if (Array.isArray(res.categoryList)) {
           setCatData(res.categoryList);
@@ -79,7 +86,7 @@ const ProductEditDialog = ({
         }
       })
       .catch((error) => {
-        console.error('Error fetching categories:', error);
+        console.error("Error fetching categories:", error);
         setCatData([]);
       })
       .finally(() => {
@@ -91,15 +98,15 @@ const ProductEditDialog = ({
       setLoading(true);
       try {
         const [prams, weights, sizes] = await Promise.all([
-          fetchDataFromApi('/api/prams'),
-          fetchDataFromApi('/api/weight'),
-          fetchDataFromApi('/api/psize'),
+          fetchDataFromApi("/api/prams"),
+          fetchDataFromApi("/api/weight"),
+          fetchDataFromApi("/api/psize"),
         ]);
         setPRamData(prams.data || []);
         setPWeigthData(weights.data || []);
         setPSizeData(sizes.data || []);
       } catch (error) {
-        console.error('Lỗi khi lấy dữ liệu:', error);
+        console.error("Lỗi khi lấy dữ liệu:", error);
       } finally {
         setLoading(false);
       }
@@ -110,7 +117,7 @@ const ProductEditDialog = ({
 
   useEffect(() => {
     setLoading(true);
-    fetchDataFromApi('/api/subCategory')
+    fetchDataFromApi("/api/subCategory")
       .then((res) => {
         if (Array.isArray(res.data)) {
           setsubCatData(res.data);
@@ -119,13 +126,15 @@ const ProductEditDialog = ({
         }
       })
       .catch((error) => {
-        console.error('Error fetching categories:', error);
+        console.error("Error fetching categories:", error);
         setsubCatData([]);
       })
       .finally(() => {
         setLoading(false);
       });
   }, []);
+
+
 
   return (
     <Dialog
@@ -137,31 +146,31 @@ const ProductEditDialog = ({
     >
       <AppBar
         sx={{
-          padding: '0 !impotion',
-          marginTop: '10px',
-          marginBottom: '10px',
+          padding: "0 !impotion",
+          marginTop: "10px",
+          marginBottom: "10px",
         }}
       >
         <Toolbar
           sx={{
-            color: '#000',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'end',
-            position: 'sticky',
-            top: '0px',
+            color: "#000",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "end",
+            position: "sticky",
+            top: "0px",
           }}
         >
           <Button
             variant="outlined"
             onClick={handleClose}
-            sx={{ marginRight: '10px' }}
+            sx={{ marginRight: "10px" }}
           >
             <IconButton edge="start" color="inherit" aria-label="close">
-              <CloseIcon sx={{ fontSize: '2.4rem' }} />
+              <CloseIcon sx={{ fontSize: "2.4rem" }} />
             </IconButton>
             <Typography
-              sx={{ ml: 2, flex: 1, fontSize: '1.6rem' }}
+              sx={{ ml: 2, flex: 1, fontSize: "1.6rem" }}
               component="div"
             >
               Đóng
@@ -170,7 +179,7 @@ const ProductEditDialog = ({
           <Button
             className="btn-blue btn-lg"
             type="submit"
-            sx={{ fontSize: '1.8rem' }}
+            sx={{ fontSize: "1.8rem" }}
             autoFocus
             color="inherit"
             onClick={editPFun}
@@ -178,10 +187,10 @@ const ProductEditDialog = ({
             Lưu những thay đổi
           </Button>
         </Toolbar>
-      </AppBar>{' '}
+      </AppBar>{" "}
       <div className="grid grid-cols-2 grid-rows-7 gap-4">
         <div className="col-span-2 row-span-7">
-          {' '}
+          {" "}
           <List className="p-5">
             <TextField
               required
@@ -196,12 +205,12 @@ const ProductEditDialog = ({
             />
             <textarea
               style={{
-                width: '100%',
-                border: '1px solid #ccc',
-                outline: 'none',
-                fontSize: '1.6rem',
-                padding: '10px',
-                borderRadius: '10px',
+                width: "100%",
+                border: "1px solid #ccc",
+                outline: "none",
+                fontSize: "1.6rem",
+                padding: "10px",
+                borderRadius: "10px",
               }}
               defaultValue="description"
               className="mb-4"
@@ -271,9 +280,9 @@ const ProductEditDialog = ({
             <div className="">
               <h6
                 style={{
-                  fontSize: '1.6rem',
-                  textAlign: 'center',
-                  marginTop: '10px',
+                  fontSize: "1.6rem",
+                  textAlign: "center",
+                  marginTop: "10px",
                 }}
               >
                 Bạn vui lòng nhập lại giá trị mới khi chỉnh sửa (Nếu không chọn
@@ -283,7 +292,7 @@ const ProductEditDialog = ({
                 <div className="w-100">
                   <Select
                     value={formFields.category}
-                    onChange={(e) => handleSelectChange(e, 'category')}
+                    onChange={(e) => handleSelectChange(e, "category")}
                     displayEmpty
                     className="w-100"
                   >
@@ -318,10 +327,10 @@ const ProductEditDialog = ({
                     {subCatData.map((item, index) => (
                       <MenuItem
                         key={index}
-                        value={item._id || ''}
+                        value={item._id || ""}
                         onClick={handleSelectSubCatChange}
                       >
-                        {item.subCat || 'No Subcategory'}
+                        {item.subCat || "No Subcategory"}
                       </MenuItem>
                     ))}
                   </Select>
@@ -337,7 +346,7 @@ const ProductEditDialog = ({
                         ? formFields.ramName
                         : []
                     }
-                    onChange={(e) => handleSelectChange(e, 'ramName')}
+                    onChange={(e) => handleSelectChange(e, "ramName")}
                     MenuProps={MenuProps}
                   >
                     {pRamData.map((w) => (
@@ -361,7 +370,7 @@ const ProductEditDialog = ({
                         ? formFields.weightName
                         : []
                     }
-                    onChange={(e) => handleSelectChange(e, 'weightName')}
+                    onChange={(e) => handleSelectChange(e, "weightName")}
                     MenuProps={MenuProps}
                   >
                     {pWeigthData.map((w) => (
@@ -385,7 +394,7 @@ const ProductEditDialog = ({
                         ? formFields.sizeName
                         : []
                     }
-                    onChange={(e) => handleSelectChange(e, 'sizeName')}
+                    onChange={(e) => handleSelectChange(e, "sizeName")}
                     MenuProps={MenuProps}
                   >
                     {pSizeData.map((w) => (
@@ -400,11 +409,17 @@ const ProductEditDialog = ({
                   </Select>
                 </div>
               </div>
+              <div className="row">
+                <div className="form-group">
+                  <h5>LOCATION</h5>
+                  {context.countryList.length !== 0 && <CountryDrop />}
+                </div>
+              </div>
             </div>
           </List>
         </div>
       </div>
-      <div style={{ padding: '24px' }}>
+      <div style={{ padding: "24px" }}>
         <ImageUpload
           previews={previews}
           onChangeFile={onChangeFile}
